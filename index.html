@@ -119,8 +119,8 @@
         .faq-question{padding:18px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;transition:var(--trans)}
         .faq-question:hover{color:var(--accent)}
         .faq-answer{padding:0 20px;max-height:0;overflow:hidden;transition:all 0.4s ease;color:var(--text-muted);font-size:0.88rem}
-        .faq-item.active .faq-answer{padding:0 20px 18px;max-height:200px}
-        .faq-item.active .faq-question i{transform:rotate(180deg);color:var(--accent)}
+        .faq-item.open .faq-answer{padding:0 20px 18px;max-height:200px}
+        .faq-item.open .faq-question i{transform:rotate(180deg);color:var(--accent)}
         .newsletter{background:var(--gradient);padding:70px 5%;text-align:center;border-radius:28px;margin:50px 5%;color:#fff}
         .newsletter h2{font-size:2.3rem;margin-bottom:14px}
         .newsletter p{margin-bottom:28px;opacity:0.9}
@@ -367,7 +367,7 @@
         });
 
         selAll('.faq-question').forEach(function(q){
-            q.addEventListener('click', function(){ q.parentElement.classList.toggle('active'); });
+            q.addEventListener('click', function(){ q.parentElement.classList.toggle('open'); });
         });
 
         sel('#reservationForm').onsubmit = function(e){

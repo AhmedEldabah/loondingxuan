@@ -201,6 +201,15 @@
 <div class="toast" id="toast"></div>
 
 <script>
+// ─── HELPERS ─────────────────────────────────────────────────────────────
+function handleImgError(img) {
+    const emoji = img.getAttribute('data-fallback-emoji') || '🍽️';
+    const placeholder = document.createElement('div');
+    placeholder.className = 'menu-img-placeholder';
+    placeholder.textContent = emoji;
+    img.parentElement.replaceChild(placeholder, img);
+}
+
 // ─── MENU DATA (same as order.html) ──────────────────────────────────────
 const MENU = [
     // Dim Sum
@@ -326,7 +335,7 @@ function renderCat(catId) {
 function buildCardHTML(item) {
     const qty = cart[item.id] || 0;
     const imgHTML = item.img
-        ? `<img src="${item.img}" alt="${item.name}" onerror="this.parentElement.innerHTML='<div class=&quot;menu-img-placeholder&quot;>${item.emoji}</div>'">`
+        ? `<img src="${item.img}" alt="${item.name}" data-fallback-emoji="${item.emoji}" onload="this.style.display='block'" onerror="handleImgError(this)">`
         : `<div class="menu-img-placeholder">${item.emoji}</div>`;
     const actionsHTML = qty > 0
         ? `<div class="qty-ctrl">
@@ -457,7 +466,7 @@ window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     if (preloader) {
         preloader.classList.add('hidden');
-        setTimeout(() => { preloader.style.display = 'none'; }, 650);
+        setTimeout(() => { preloader.style.display = 'none'; }, 600);
     }
 });
 </script>

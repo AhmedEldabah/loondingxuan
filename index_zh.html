@@ -323,6 +323,17 @@
 
         sel('#yr').textContent = new Date().getFullYear();
 
+        document.querySelectorAll('.menu-img').forEach(function(img){
+            img.onerror = function(){
+                this.style.display = 'none';
+                this.parentElement.style.background = 'var(--bg-main)';
+                this.parentElement.style.display = 'flex';
+                this.parentElement.style.alignItems = 'center';
+                this.parentElement.style.justifyContent = 'center';
+                this.parentElement.innerHTML = '<i class="fas fa-utensils" style="color:var(--accent);font-size:1.8rem;opacity:0.5"></i>';
+            };
+        });
+
         window.addEventListener('scroll', function(){
             sel('#nav').classList.toggle('scrolled', window.scrollY > 50);
             sel('#topBtn').classList.toggle('visible', window.scrollY > 800);

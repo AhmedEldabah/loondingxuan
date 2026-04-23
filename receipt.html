@@ -182,7 +182,7 @@ function renderOrder(o) {
     document.getElementById('order-id-display').textContent = 'Order #' + shortId;
     const eta = o.estimatedMinutes || 45;
     document.getElementById('eta-display').textContent = `~${eta} min`;
-    if (o.lat && o.lng) document.getElementById('eta-note').textContent = 'Based on your delivery distance from Sheikh Zayed';
+    if (o.lat && o.lng) document.getElementById('eta-note').textContent = 'Based on your delivery distance from Rehab';
     document.getElementById('payment-display').textContent = PAYMENT_LABELS[o.paymentMethod] || o.paymentMethod || '—';
     const d = o.createdAt ? new Date(o.createdAt) : new Date();
     document.getElementById('receipt-date').textContent = d.toLocaleDateString('en-EG', { day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit' });
